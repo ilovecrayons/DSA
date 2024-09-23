@@ -53,5 +53,14 @@ public class ProgramTest {
         thrown.expectMessage("Longitude out of range");
         Program.isValid(bad);
     }
+
+    @Test
+    public void testIsValidWrongNumFields() throws Exception{
+        String[] bad = {"1","2","3","4","5"};
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage("Invalid number of fields");
+        Program.isValid(bad);
+    }
+
     
 }
