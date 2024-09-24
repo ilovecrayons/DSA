@@ -4403,7 +4403,6 @@ Australia	Mountain	Mount Igy	-29.4702395147932	133.067693710327	216
 Australia	Mountain	England Hill	-28.1595679921394	134.214906692505	315
 Australia	Mountain	Mount Gillen	-28.2167603401696	134.393348693848	268
 Australia	Mountain	Mount Bray	-28.1544222074931	134.794435501099	222
-Australia	Mountain	McDonald Peak	-28.254342	134.751005	???? m
 Australia	Mountain	Cameron Hill	-28.2693865462355	134.795894622803	217
 Australia	Mountain	Mount Barry	-28.3778837668152	134.72620010376	269
 Australia	Mountain	Ant Hill	-28.4796312485644	134.561061859131	253
@@ -6634,7 +6633,6 @@ Australia	Mountain	Camel Back Mountain	-29.427113926006	152.589626312256	694
 Australia	Mountain	Chapmans Peak	-29.357491387267	152.787895202637	398
 Australia	Mountain	Mount Doubleduke	-29.2997231527557	153.188381195068	232
 Australia	Mountain	Bally Mountain	-28.1739446085247	153.337812423706	489
-Australia	Mountain	Round Mountain	-28.333471	153.551445	???? m
 Australia	Mountain	Mount Matheson	-28.5390644068029	153.301248550415	804
 Australia	Mountain	Buckombil Mountain	-28.9344019256333	153.423728942871	171
 Australia	Mountain	The Bald Knob	-29.5102842937361	153.343734741211	70
@@ -7707,7 +7705,6 @@ Australia	Mountain	Mount Youngal	-36.3946185212519	148.118534088135	1515
 Australia	Mountain	Granuaille Mountain	-36.4390302907666	148.117160797119	1427
 Australia	Mountain	Hermit Mountain	-36.491697459145	148.082399368286	1405
 Australia	Mountain	Mount Townsend	-36.4225946801932	148.258609771728	2209
-Australia	Mountain	Mount Kosciuszko	-36.455877	148.263330	???? m
 Australia	Mountain	Mount Twynam	-36.392131264053	148.314914703369	2196
 Australia	Mountain	Carruthers Peak	-36.4097476210871	148.290538787842	2145
 Australia	Mountain	Mount Stilwell	-36.4489037948928	148.319721221924	2054
@@ -8412,7 +8409,6 @@ Australia	Mountain	Mount Field East	-42.654351304369	146.646366119385	1274
 Australia	Mountain	Mount Monash	-42.6842651573735	146.62576675415	1179
 Australia	Mountain	Mount Spode	-42.5736257701471	146.909437179565	522
 Australia	Mountain	Mount Fenton	-42.6690575923155	146.848583221436	290
-Australia	Mountain	Snowy North	-42.861118	146.645765	???? m
 Australia	Mountain	Mount Styx	-42.8315413138894	146.745843887329	1089
 Australia	Mountain	Flat Iron Hill	-42.1948241850803	147.05792427063	988
 Australia	Mountain	Mount Serat	-42.2206360362295	147.11706161499	912
@@ -11589,7 +11585,6 @@ Mozambique	Mountain	Chiove	-13.3562359	35.6480133	1381 m
 Mozambique	Mountain	Macanga	-13.2233094	35.7481637	1156 m
 Mozambique	Mountain	Mebou	-13.2945902	35.6889043	1288 m
 Mozambique	Mountain	Malati	-13.3538195	35.7272908	1238 m
-Mozambique	Mountain	Muijeleveti	-12.707444	35.878231	???? m
 Mozambique	Mountain	Litulo	-12.7561857	35.9998805	1246 m
 Mozambique	Mountain	Mount Namassinga	-12.7883535	36.1595957	996 m
 Mozambique	Mountain	Lua	-12.7077421	36.1559257	900 m
@@ -11900,7 +11895,6 @@ Mozambique	Mountain	Culucuto	-12.735208	39.1975818	464 m
 Mozambique	Mountain	Campire	-12.7793358	39.0528279	556 m
 Mozambique	Mountain	Mtapata	-12.7789688	39.1519284	440 m
 Mozambique	Mountain	Ricolo	-12.7592989	39.1586833	470 m
-Mozambique	Mountain	Tava	-12.723603	39.259216	???? m
 Mozambique	Mountain	Nhagire	-12.7313148	39.3221932	399 m
 Mozambique	Mountain	Napaço	-12.8209144	39.2658723	405 m
 Mozambique	Mountain	Merripa	-12.9599415	39.0971724	510 m
@@ -12277,7 +12271,6 @@ Mozambique	Mountain	Elamado	-16.147531	36.5153416	983 m
 Mozambique	Mountain	Macuto	-16.3109395	35.3398168	451 m
 Mozambique	Mountain	Malimbo	-16.3906567	35.3142288	430 m
 Mozambique	Mountain	Mongue	-16.4195963	35.5043472	948 m
-Mozambique	Mountain	Lipembe	-16.288878	35.708239	???? m
 Mozambique	Mountain	Catangua	-16.2632292	35.7629049	750 m
 Mozambique	Mountain	Lumba	-16.3470478	35.7852102	747 m
 Mozambique	Mountain	Nhamitala	-16.3285202	35.8165379	707 m
@@ -14559,7 +14552,6 @@ New Zealand	Mountain	Judy	-41.7816939	173.578238	1026 m
 New Zealand	Mountain	Mount Boltoff	-41.8213976	173.5343046	1327 m
 New Zealand	Mountain	Woody Peak	-41.8002907	173.5445229	970 m
 New Zealand	Mountain	Mount Delight	-41.8121374	173.5727253	1295 m
-New Zealand	Mountain	Mount Argelin	-41.809368	173.572157	???? m
 New Zealand	Mountain	Mount Abrupt	-41.8273515	173.5444244	1353 m
 New Zealand	Mountain	Gordon's Knob	-41.7672904	173.6046736	1000 m
 New Zealand	Mountain	Rocky Gill	-41.7867815	173.5865252	1260 m
@@ -17480,7 +17472,6 @@ Pakistan	Mountain	Chornar Mountain	33.393595	73.958347	3646 m
 Pakistan	Mountain	Mata Kial Mountain	33.349565	74.005887	3031 m
 Pakistan	Mountain	Bharo Gala Mountain	33.345178	74.085937	822 m
 Pakistan	Mountain	Badal Gala Mountain	33.395953	74.137047	1278 m
-Pakistan	Mountain	Chhatri Mountain	33.305527	74.105762	???? m
 Pakistan	Mountain	Chamumbi Mountain	33.055866	74.031814	728 m
 Pakistan	Mountain	Janiwali Ker Mountain	33.019373	74.088829	588 m
 Pakistan	Mountain	Gorizala Ki Ker Mountain	33.021894	74.127872	1709 m
@@ -18597,7 +18588,6 @@ Philippines	Mountain	Mount Nannak	16.5657	121.066775	1240 m
 Philippines	Mountain	Mount Cunig	16.550643	121.077447	1155 m
 Philippines	Mountain	Mount Tiblac	16.565507	121.083654	1260 m
 Philippines	Mountain	Mount Baong	16.8333331	121.3000001	547 m
-Philippines	Mountain	Mount Orcog	16.483190	121.000028	???? m
 Philippines	Mountain	Mount Tutun	16.463035	121.367397	801 m
 Philippines	Mountain	Mount Naminudut	16.062061	121.234022	1355 m
 Philippines	Mountain	Mount Nanaabung	16.040556	121.233889	1634 m
@@ -22050,7 +22040,6 @@ South Africa	Mountain	Oskoppie	-28.9244292	26.5733275	1477 m
 South Africa	Mountain	Vaalkop	-28.9823686	26.7100804	1477 m
 South Africa	Mountain	Bukskop	-29.0612638	26.4927305	1357 m
 South Africa	Mountain	Boesmanskop	-29.1457184	26.4353831	1439 m
-South Africa	Mountain	Bloukop	-29.050638	26.583792	???? m
 South Africa	Mountain	Leeuberg	-29.2355839	26.1697425	1573 m
 South Africa	Mountain	Wolwekop	-29.4599497	26.0177452	1419 m
 South Africa	Mountain	Leeukop	-29.3096601	26.4028511	1605 m
@@ -22285,7 +22274,6 @@ South Africa	Mountain	Die Duiwel	-32.0753183	23.9045356	1862 m
 South Africa	Mountain	Hoëpunt	-32.1297932	23.7732531	1877 m
 South Africa	Mountain	Vaalberg	-32.2238253	23.6005738	1124 m
 South Africa	Mountain	Kunaskop	-32.3329336	23.6412875	1001 m
-South Africa	Mountain	Grootberg	-32.222850	23.867171	???? m
 South Africa	Mountain	Groot Tafelberg	-31.1141823	23.9385936	1973 m
 South Africa	Mountain	Osberg	-31.182414	23.9153368	1631 m
 South Africa	Mountain	Graskop	-31.1386773	24.0604164	1548 m
@@ -25364,7 +25352,6 @@ Taiwan	Mountain	Meikueisimo Mountain	24.697018	121.474013	1787 m
 Taiwan	Mountain	Loulan Mountain	24.680727	121.502694	1918 m
 Taiwan	Mountain	Mawanglai Mountain	24.675084	121.468799	1794 m
 Taiwan	Mountain	Shangzeshui Mountain	24.688365	121.526886	1346 m
-Taiwan	Mountain	Poluo Mountain	24.639374	121.477071	???? m
 Taiwan	Mountain	Fanfan Mountain	24.624633	121.471625	1713 m
 Taiwan	Mountain	Cishan	24.617288	121.499967	1135 m
 Taiwan	Mountain	Penpen Mountain	24.637228	121.521782	964 m
@@ -28840,7 +28827,6 @@ United States	Mountain	Rogers Peak	45.6589797	-123.5427681	1130 m
 United States	Volcano	Mount Adams	46.2024681675299	-121.490850448608	3743 m
 United States	Volcano	Mount Hood	45.3734935430662	-121.69581413269	11,239 ft
 United States	Mountain	Heavens Peak	48.7083515675953	-113.856554031372	2739 m
-United States	Mountain	Clements Mountain	48.692433	-113.741026	???? m
 United States	Mountain	Crowfeet Mountain	48.837040346035	-113.696565628052	2717 m
 United States	Mountain	Mount Siyeh	48.7286242437355	-113.649959564209	3049 m
 United States	Mountain	Cracker Peak	48.7260208	-113.636164	2997 m
@@ -30602,7 +30588,6 @@ Chile	Mountain	Nevado de los Piuquenes	-33.5152045	-69.8351313	6019
 Chile	Mountain	Cerro Marmolejo	-33.7348162	-69.8780154	6109
 Chile	Mountain	Cerro de los Inocentes	-33.7841375	-80.8034012	1329
 Chile	Mountain	Morro El Peumo	-34.1016134	-71.2275664	694
-Chile	Mountain	Alto de las Placetas	-34.855087	-70.469549	???? m
 Chile	Mountain	Cerro Peine	-35.6127576	-71.025083	2458
 Chile	Mountain	Descabezado Grande	-35.5906503	-70.7465726	3953
 Chile	Volcano	Quizapu Crater	-35.63705	-70.7569506	3292
@@ -31403,7 +31388,6 @@ Chile	Mountain	Punta Alta de Almahue	-34.395206	-71.2646853	501
 Chile	Mountain	Puntilla Las Palomas	-34.3088378	-71.2379183	715
 Chile	Mountain	Cerro Bari	-34.385098	-71.2946781	769
 Chile	Mountain	Cerro La Pataguilla	-34.4180676	-71.3300665	346
-Chile	Mountain	Cerro Mancumán	-34.414249	-71.345908	???? m
 Chile	Mountain	Cerro Valdovinos	-34.3674057	-71.332508	733
 Chile	Mountain	Cerro La Esperanza	-34.2817507	-71.2896142	483
 Chile	Mountain	Alto Viscachas	-34.2470105	-71.1941088	1177
@@ -32856,7 +32840,6 @@ Chile	Mountain	Cerro Nancura	-34.433524	-70.9847017	728
 Chile	Mountain	Cerro Talami	-34.1067622	-70.9894353	1975
 Chile	Mountain	Cerro Tuniche	-34.096052	-70.7969075	800
 Chile	Mountain	Cerro Challay	-33.9057097	-70.7099612	1258
-Chile	Mountain	Cerro Las Sierrecillas	-33.966890	-70.856538	???? m
 Chile	Mountain	Mo. Las Lagunas o Launas	-33.9166319	-70.9692496	2073
 Chile	Mountain	Morro Las Cabras	-33.7942312	-70.9593395	1138
 Chile	Mountain	Cerro Cato	-36.3354629	-72.7110992	521
@@ -34243,7 +34226,6 @@ Ecuador	Mountain	Chiriquin	-1.2267272	-78.7982369	4232
 Ecuador	Mountain	Hualajaló	-1.1512542	-78.8034465	4385
 Ecuador	Mountain	Cerro El Alumbre Pungu	-1.1916505	-78.8625302	4510
 Ecuador	Mountain	Pugyucuchoy	-1.0873505	-78.8459534	4560
-Ecuador	Mountain	Cerro Cabeza	-0.999432	-78.876824	???? m
 Ecuador	Mountain	Cerro Sumiurcu	-1.0425266	-78.8820674	4525
 Ecuador	Mountain	Cerro Rumicruz	-1.0165241	-78.9220645	4377
 Ecuador	Mountain	Cerro Soldado Mapa	-1.0234796	-78.9146842	4425

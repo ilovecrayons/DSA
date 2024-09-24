@@ -2,7 +2,7 @@ import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
-public class ProgramTest {
+public class MountainTest {
     
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -10,7 +10,7 @@ public class ProgramTest {
     @Test
     public void testIsValid() throws Exception{
         String[] good = {"1","2","3","4","5","6"};
-        Program.isValid(good);
+        Mountain.isValid(good);
     }
     
     @Test
@@ -18,7 +18,7 @@ public class ProgramTest {
         String[] bad = {"1", "2", "3", "", "5", "6"};
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("Empty fields");
-        Program.isValid(bad);
+        Mountain.isValid(bad);
     }
     
     @Test 
@@ -26,7 +26,7 @@ public class ProgramTest {
         String[] bad = {"1","2","3","91","5","6"};
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("Latitude out of range");
-        Program.isValid(bad);
+        Mountain.isValid(bad);
     }
     
     @Test 
@@ -34,7 +34,7 @@ public class ProgramTest {
         String[] bad = {"1","2","3","4","181","6"};
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("Longitude out of range");
-        Program.isValid(bad);
+        Mountain.isValid(bad);
     }
 
     
@@ -43,7 +43,7 @@ public class ProgramTest {
         String[] bad = {"1","2","3","-91","5","6"};
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("Latitude out of range");
-        Program.isValid(bad);
+        Mountain.isValid(bad);
     }
     
     @Test 
@@ -51,7 +51,7 @@ public class ProgramTest {
         String[] bad = {"1","2","3","4","-181","6"};
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("Longitude out of range");
-        Program.isValid(bad);
+        Mountain.isValid(bad);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class ProgramTest {
         String[] bad = {"1","2","3","4","5"};
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("Invalid number of fields");
-        Program.isValid(bad);
+        Mountain.isValid(bad);
     }
 
     

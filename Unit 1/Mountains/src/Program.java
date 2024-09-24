@@ -6,10 +6,8 @@ import java.nio.file.Paths;
 
 public class Program {
     public static void main(String[] args) throws Exception {
-        String[] shortestMountain = new String[6];
-        String[] tallestMountain = new String[6];
-        shortestMountain[5] = String.valueOf(Integer.MAX_VALUE);
-        tallestMountain[5] = String.valueOf(Integer.MIN_VALUE);
+        Mountain shortestMountain = null;
+        Mountain tallestMountain = null;
         int sizeOfOriginalDB = 0;
         int sizeOfCleanDB = 0;
         int sizeOfErrorDB = 0;
@@ -28,17 +26,22 @@ public class Program {
         
         String line;
         while((line = br.readLine()) != null) {
-            String[] data = line.split("\\t");
             sizeOfOriginalDB++;
             try{
                 // height format: 1234 m
-                isValid(data);
+                Mountain m = new Mountain(line);
                 cbw.write(line + "\n");
-                if(Double.parseDouble(data[5].replace(" m", "")) < Double.parseDouble(shortestMountain[5].replace(" m", ""))){
-                    shortestMountain = data;
+                if(shortestMountain == null){
+                    shortestMountain = m;
                 }
-                if(Double.parseDouble(data[5].replace(" m", "")) > Double.parseDouble(tallestMountain[5].replace(" m", ""))){
-                    tallestMountain = data;
+                if(tallestMountain == null){
+                    tallestMountain = m;
+                }
+                if(m.getHeight() < shortestMountain.getHeight()){
+                    shortestMountain = m;
+                }
+                if(m.getHeight() > tallestMountain.getHeight()){
+                    tallestMountain = m;
                 }
                 sizeOfCleanDB++;
             } catch (RuntimeException e){
@@ -54,30 +57,8 @@ public class Program {
         System.out.println("Original DB size: " + sizeOfOriginalDB);
         System.out.println("Clean DB size: " + sizeOfCleanDB);
         System.out.println("Error DB size: " + sizeOfErrorDB);
-        System.out.println("Shortest mountain: " + shortestMountain.toString());
-        System.out.println("Tallest mountain: " + tallestMountain.toString());
+        System.out.println("Shortest mountain: " + shortestMountain.getRawData());
+        System.out.println("Tallest mountain: " + tallestMountain.getRawData());
     }
-    public static void isValid(String[] data) {
-        if(data.length != 6){
-            throw new RuntimeException("Invalid number of fields");
-        }
-        if(data[0].isEmpty() || data[1].isEmpty() || data[2].isEmpty() || data[3].isEmpty() || data[4].isEmpty() || data[5].isEmpty()){
-            throw new RuntimeException("Empty fields");
-        }
-        
-        try {
-            double lat = Double.parseDouble(data[3]);
-            double lon = Double.parseDouble(data[4]);
-            if(lat <= -90 || lat >= 90){
-                throw new RuntimeException("Latitude out of range");
-            }
-            if(lon <= -180 || lon >= 180){
-                throw new RuntimeException("Longitude out of range");
-            }
-        } catch (NumberFormatException e){
-            throw new RuntimeException("Invalid latitude or longitude");
-        }
-        
-        
-    }
+    
 }
