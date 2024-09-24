@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
@@ -15,52 +17,75 @@ public class MountainTest {
     
     @Test
     public void testIsValidEmpty() throws Exception {
-        String[] bad = {"1", "2", "3", "", "5", "6"};
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Empty fields");
-        Mountain.isValid(bad);
+        try{
+            String[] bad = {"1", "2", "3", "", "5", "6"};
+            Mountain.isValid(bad);}
+        catch  (RuntimeException e) {
+            assertEquals("Empty fields", e.getMessage());
+        }
+
     }
     
     @Test 
     public void testIsValidWrongLat() throws Exception{
+        try{
         String[] bad = {"1","2","3","91","5","6"};
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Latitude out of range");
+        
         Mountain.isValid(bad);
+        }
+        catch  (RuntimeException e) {
+            assertEquals("Latitude out of range", e.getMessage());
+        }
     }
     
     @Test 
     public void testIsValidWrongLon() throws Exception{
+        try{
         String[] bad = {"1","2","3","4","181","6"};
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Longitude out of range");
-        Mountain.isValid(bad);
+        
+        Mountain.isValid(bad);}
+        catch  (RuntimeException e) {
+        assertEquals("Longitude out of range", e.getMessage());
+        }
     }
 
     
     @Test 
     public void testIsValidWrongLatNeg() throws Exception{
+        try{
         String[] bad = {"1","2","3","-91","5","6"};
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Latitude out of range");
-        Mountain.isValid(bad);
+        
+        Mountain.isValid(bad);}
+        catch  (RuntimeException e) {
+            assertEquals("Latitude out of range", e.getMessage());
+        }
     }
+    
+   
+    
     
     @Test 
     public void testIsValidWrongLonNeg() throws Exception{
+        try{
         String[] bad = {"1","2","3","4","-181","6"};
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Longitude out of range");
-        Mountain.isValid(bad);
+        
+        Mountain.isValid(bad);}
+        catch  (RuntimeException e) {
+            assertEquals("Longitude out of range", e.getMessage());
+        }
     }
 
     @Test
     public void testIsValidWrongNumFields() throws Exception{
+        try{
         String[] bad = {"1","2","3","4","5"};
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Invalid number of fields");
-        Mountain.isValid(bad);
+        
+        Mountain.isValid(bad);}
+        catch  (RuntimeException e) {
+            assertEquals("Invalid number of fields", e.getMessage());
+        }
     }
+
 
     
 }
