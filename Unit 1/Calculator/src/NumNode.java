@@ -6,6 +6,8 @@ public class NumNode extends RawNode {
         numValue = Double.parseDouble(rawContent); // BREAKPOINT
     }
 
+    
+
     public static NumNode createNode(String rawContent) {
         return new NumNode(rawContent);
     }
