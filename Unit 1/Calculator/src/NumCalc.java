@@ -65,9 +65,10 @@ public class NumCalc {
         }
     }
 
-    public double evaluateExpression(){
+    public double evaluateExpression(OpNode.OpPrio opPrio) {
         print();
         RawNode crt = firstNode;
+        
         while(crt != null){
             //operator precedence
             if(crt instanceof OpNode){
@@ -75,15 +76,15 @@ public class NumCalc {
                 OpNode operatorNode = (OpNode) crt;
                 NumNode prevNode = (NumNode) operatorNode.getPrev();
                 NumNode nextNode = (NumNode) operatorNode.getNext();
-                if(operatorNode.getOpPrio() == OpNode.OpPrio.LOWER){
+                if(operatorNode.getOpPrio() != opPrio){
                     crt = operatorNode.getNext();
                     continue;
                 }
 
-                if(operatorNode.getOpPrio() == OpNode.OpPrio.HIGHER){
+                if(operatorNode.getOpPrio() == opPrio){
                     crt = evaluateBinaryOperation(operatorNode);
-                    crt.addNext(nextNode.getNext());
-                    crt.addPrev(prevNode.getPrev());
+                    if (nextNode.getNext() != null) crt.addNext(nextNode.getNext());
+                    if(prevNode.getPrev() != null) crt.addPrev(prevNode.getPrev());
                     crt = crt.getNext();
                 }
                 print();

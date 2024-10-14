@@ -10,6 +10,7 @@ public class OpNode extends RawNode{
     }
 
     public enum OpPrio {
+        HIGHEST,
         HIGHER,
         LOWER
     }
@@ -45,7 +46,7 @@ public class OpNode extends RawNode{
                 break;
             case "^":
                 opCode = OpCode.POWER;
-                opPrio = OpPrio.HIGHER;
+                opPrio = OpPrio.HIGHEST;
                 break;
             default:
                 throw new RuntimeException("Unknown operator: " + rawContent);

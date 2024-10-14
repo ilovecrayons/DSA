@@ -1,7 +1,7 @@
 public class RawNode {
     String rawContent;
-    RawNode prev;
-    RawNode next;
+    RawNode prev = null;
+    RawNode next = null;
 
     RawNode(String rawContent) {
         this.rawContent = rawContent;
