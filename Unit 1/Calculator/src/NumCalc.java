@@ -68,23 +68,32 @@ public class NumCalc {
     public double evaluateExpression(OpNode.OpPrio opPrio) {
         print();
         RawNode crt = firstNode;
+        RawNode head = firstNode;
         
         while(crt != null){
-            //operator precedence
             if(crt instanceof OpNode){
-                //System.out.println("Operator: " + crt.getRawContent());
                 OpNode operatorNode = (OpNode) crt;
                 NumNode prevNode = (NumNode) operatorNode.getPrev();
                 NumNode nextNode = (NumNode) operatorNode.getNext();
-                if(operatorNode.getOpPrio() != opPrio){
-                    crt = operatorNode.getNext();
-                    continue;
-                }
 
                 if(operatorNode.getOpPrio() == opPrio){
+                    System.out.println("Operator recognized");
                     crt = evaluateBinaryOperation(operatorNode);
-                    if (nextNode.getNext() != null) crt.addNext(nextNode.getNext());
-                    if(prevNode.getPrev() != null) crt.addPrev(prevNode.getPrev());
+                    System.out.println("crt value: " + crt.getRawContent());
+
+                    if (nextNode.getNext() != null){
+                        System.err.println("adding next node");
+                        crt.addNext(nextNode.getNext());
+                    } 
+                    
+                    if(prevNode.getPrev() != null){
+                        System.err.println("adding prev node");
+                        crt.addPrev(prevNode.getPrev());
+                    }
+                    
+                    crt = crt.getNext();
+                } else {
+                    System.out.println("Operator not recognized");
                     crt = crt.getNext();
                 }
                 print();
