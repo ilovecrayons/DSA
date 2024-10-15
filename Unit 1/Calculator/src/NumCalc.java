@@ -21,7 +21,7 @@ public class NumCalc {
                 return NumNode.createNode(rawContent);
             }
         } catch (RuntimeException e) {
-            throw new RuntimeException("Unknown input: " + rawContent);
+            throw new RuntimeException("Unknown token: " + rawContent);
         }
     }
 
@@ -41,7 +41,7 @@ public class NumCalc {
         }
     }
 
-    public NumNode evaluateBinaryOperation(OpNode operatorNode) {
+    public NumNode evaluateBinaryOperation(OpNode operatorNode) throws RuntimeException {
         NumNode prevNode = (NumNode) operatorNode.getPrev();
         NumNode nextNode = (NumNode) operatorNode.getNext();
         double prevValue = prevNode.getNumValue();
@@ -54,9 +54,20 @@ public class NumCalc {
             case MULTIPLICATION:
                 return NumNode.createNode(String.valueOf(prevValue * nextValue));
             case DIVISION:
-                return NumNode.createNode(String.valueOf(prevValue / nextValue));
+                try {
+                    if (nextValue == 0) {
+                        throw new RuntimeException("Cannot divide by zero");
+                    }
+                    return NumNode.createNode(String.valueOf(prevValue / nextValue));
+                } catch (ArithmeticException e) {
+                    throw new RuntimeException("Cannot divide by zero");
+                }
             case MODULUS:
-                return NumNode.createNode(String.valueOf(prevValue % nextValue));
+                try{
+                    return NumNode.createNode(String.valueOf(prevValue % nextValue));
+                } catch (ArithmeticException e) {
+                    throw new RuntimeException("Cannot divide by zero");
+                }
             case POWER:
                 return NumNode.createNode(String.valueOf(Math.pow(prevValue, nextValue)));
             default:
@@ -64,15 +75,22 @@ public class NumCalc {
         }
     }
 
-    public void evaluateExpression(OpNode.OpPrio opPrio) {
-        print();
+    public void evaluateExpression(OpNode.OpPrio opPrio) throws RuntimeException {
+
         RawNode crt = firstNode;
 
         while (crt != null) {
             if (crt instanceof OpNode) {
-                OpNode operatorNode = (OpNode) crt;
-                NumNode prevNode = (NumNode) operatorNode.getPrev();
-                NumNode nextNode = (NumNode) operatorNode.getNext();
+                OpNode operatorNode = null;
+                NumNode prevNode;
+                NumNode nextNode;
+                try {
+                operatorNode = (OpNode) crt;
+                prevNode = (NumNode) operatorNode.getPrev();
+                nextNode = (NumNode) operatorNode.getNext();
+                } catch (Exception e) {
+                    throw new RuntimeException("invalid operands for operator: " + operatorNode.getRawContent());
+                }
 
                 if (operatorNode.getOpPrio() == opPrio) {
                     // System.out.println("Operator recognized");
