@@ -5,16 +5,16 @@ public class NumCalc {
 
     public void print() {
         RawNode crt = firstNode;
-        while(crt != null) {
+        while (crt != null) {
             System.out.print(crt.getRawContent() + " ");
             crt = crt.getNext();
-            
+
         }
         System.out.println();
     }
 
     public RawNode makeNode(String rawContent) throws RuntimeException {
-        try{
+        try {
             try {
                 return OpNode.createNode(rawContent);
             } catch (RuntimeException e) {
@@ -35,14 +35,13 @@ public class NumCalc {
                 firstNode = head;
                 lastNode = head;
             } else {
-                lastNode = lastNode.addNext(crtNode); 
-                // print()
-;            }
+                lastNode = lastNode.addNext(crtNode);
+            }
 
         }
     }
 
-    public NumNode evaluateBinaryOperation(OpNode operatorNode){
+    public NumNode evaluateBinaryOperation(OpNode operatorNode) {
         NumNode prevNode = (NumNode) operatorNode.getPrev();
         NumNode nextNode = (NumNode) operatorNode.getNext();
         double prevValue = prevNode.getNumValue();
@@ -65,47 +64,45 @@ public class NumCalc {
         }
     }
 
-    public double evaluateExpression(OpNode.OpPrio opPrio) {
+    public void evaluateExpression(OpNode.OpPrio opPrio) {
         print();
         RawNode crt = firstNode;
-        
-        while(crt != null){
-            if(crt instanceof OpNode){
+
+        while (crt != null) {
+            if (crt instanceof OpNode) {
                 OpNode operatorNode = (OpNode) crt;
                 NumNode prevNode = (NumNode) operatorNode.getPrev();
                 NumNode nextNode = (NumNode) operatorNode.getNext();
 
-                if(operatorNode.getOpPrio() == opPrio){
-                    //System.out.println("Operator recognized");
+                if (operatorNode.getOpPrio() == opPrio) {
+                    // System.out.println("Operator recognized");
                     crt = evaluateBinaryOperation(operatorNode);
-                    //System.out.println("crt value: " + crt.getRawContent());
+                    // System.out.println("crt value: " + crt.getRawContent());
 
-                    if (nextNode.getNext() != null){
-                        //System.err.println("adding next node");
+                    if (nextNode.getNext() != null) {
+                        // System.err.println("adding next node");
                         crt.addNext(nextNode.getNext());
-                    } 
-                    
-                    if(prevNode.getPrev() != null){
-                        //System.err.println("adding prev node");
+                    }
+
+                    if (prevNode.getPrev() != null) {
+                        // System.err.println("adding prev node");
                         crt.addPrev(prevNode.getPrev());
                     } else {
                         firstNode = crt;
                     }
                     print();
-                    
+
                     crt = crt.getNext();
                 } else {
-                    //System.out.println("Operator not recognized");
+                    // System.out.println("Operator not recognized");
                     crt = crt.getNext();
                 }
-                
 
-            } else if(crt instanceof NumNode){
+            } else if (crt instanceof NumNode) {
                 crt = crt.getNext();
-                
+
             }
         }
-        return 0;
     }
-    
+
 }
