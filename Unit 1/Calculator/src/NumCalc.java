@@ -1,16 +1,19 @@
+import java.util.ArrayList;
 
 public class NumCalc {
     RawNode head;
     RawNode firstNode;
-
-    public void print() {
+    ArrayList<String> steps = new ArrayList<String>();
+    public String print() {
         RawNode crt = firstNode;
+        String result = "";
         while (crt != null) {
-            System.out.print(crt.getRawContent() + " ");
+            result += crt.getRawContent() + " ";
+            //System.out.print(crt.getRawContent() + " ");
             crt = crt.getNext();
 
         }
-        System.out.println();
+        return result;
     }
 
     public RawNode makeNode(String rawContent) throws RuntimeException {
@@ -75,7 +78,7 @@ public class NumCalc {
         }
     }
 
-    public void evaluateExpression(OpNode.OpPrio opPrio) throws RuntimeException {
+    public ArrayList<String> evaluateExpression(OpNode.OpPrio opPrio) throws RuntimeException {
 
         RawNode crt = firstNode;
 
@@ -108,7 +111,7 @@ public class NumCalc {
                     } else {
                         firstNode = crt;
                     }
-                    print();
+                    steps.add(print());
 
                     crt = crt.getNext();
                 } else {
@@ -121,6 +124,7 @@ public class NumCalc {
 
             }
         }
+        return steps;
     }
-
+    
 }

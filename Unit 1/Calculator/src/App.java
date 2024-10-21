@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class App {
@@ -11,9 +13,20 @@ public class App {
 
             try {
                 NumCalc calc = new NumCalc(expr);
-                calc.evaluateExpression(OpNode.OpPrio.HIGHEST);
-                calc.evaluateExpression(OpNode.OpPrio.HIGHER);
-                calc.evaluateExpression(OpNode.OpPrio.LOWER);
+                ArrayList<String> steps = calc.evaluateExpression(OpNode.OpPrio.HIGHEST);
+                
+                steps.addAll(calc.evaluateExpression(OpNode.OpPrio.HIGHER));
+                
+                steps.addAll(calc.evaluateExpression(OpNode.OpPrio.LOWER));
+                
+                steps = new ArrayList<String>(new HashSet<String>(steps));
+                System.out.println("Result: " + steps.get(steps.size() - 1));
+                System.out.println("Steps:");
+                for(String step : steps) {
+                    System.out.println(step);
+                }
+
+                
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
