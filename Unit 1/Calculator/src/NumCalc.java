@@ -11,7 +11,6 @@ public class NumCalc {
             result += crt.getRawContent() + " ";
             //System.out.print(crt.getRawContent() + " ");
             crt = crt.getNext();
-
         }
         return result;
     }
@@ -126,5 +125,4 @@ public class NumCalc {
         }
         return steps;
     }
-    
 }
