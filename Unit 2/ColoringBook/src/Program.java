@@ -102,6 +102,7 @@ public class Program {
      */
     public static MouseHook _onMouseClick = (mouseEvent) -> {
         System.out.printf("(%d,%d)\n", _frame.getCanvasX(mouseEvent), _frame.getCanvasY(mouseEvent));
+        queueFlood(_frame.getCanvasX(mouseEvent), _frame.getCanvasY(mouseEvent), Color.YELLOW);
     };
     
     /**
@@ -126,7 +127,7 @@ public class Program {
         
         // make some change to the drawing, then stop for applause.
         //paint();
-        queueFlood(202, 156, Color.BLUE);
+        
         _frame.stop();
         
         // setup a hook such that we know where we're clicking
