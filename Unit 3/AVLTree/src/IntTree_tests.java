@@ -32,18 +32,11 @@ public class IntTree_tests {
     public void test_avlTree() {
         IntTree tree = newTreeAVL(1,2,3,4,5,6);
         String expected = 
-        "[1]               \n" +
-        "   \\              \n" +
-        "   [2]            \n" +
-        "      \\           \n" +
-        "      [3]         \n" +
-        "         \\        \n" +
-        "         [4]      \n" +
-        "            \\     \n" +
-        "            [5]   \n" +
-        "               \\  \n" +
-        "               [6]\n" +
-        "                  \n";
+        "      ___[4]      \n" +
+        "     /      \\     \n" +
+        "   [2]      [5]   \n" +
+        "  /   \\        \\  \n" +
+        "[1]   [3]      [6]\n";
         String output = tree.toPrettyPrint();
         System.out.println(output);
         assertEquals(expected, output);

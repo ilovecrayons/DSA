@@ -9,7 +9,14 @@ public class HashStringSet {
 
 	private Node[] elementData;
 	private int size;
+	private int dataSize;
 
+	public int getDataSize(){
+		return dataSize;
+	}
+	public int getBuckets(){
+		return elementData.length;
+	}
 	// Constructs a new empty set of integers.
 	public HashStringSet() {
 		elementData = (Node[]) new HashStringSet.Node[10];
@@ -41,6 +48,8 @@ public class HashStringSet {
 		if (loadFactor() > MAX_LOAD) {
 			rehash();
 		}
+		byte[] bytes = value.getBytes();
+		dataSize += bytes.length;
 	}
 
 	// Returns true if o refers to another HashStringSet with the same elementData as
