@@ -10,8 +10,6 @@ public class Program {
     public static void main(String[] args) throws IOException {
         System.out.println("Hello to the Hashing competition!");
 
-        // read the book word by word and add each word to a HashWordSet
-
         File file = new File(_bookFile);
         HashWordSet hash = new HashWordSet();
         Scanner reader = new Scanner(file);
@@ -19,12 +17,13 @@ public class Program {
             hash.add(reader.next(), 41);
         }
         reader.close();
-        //generate all primes within 1k for i.
+        //hash.printSortedHash();
+
         // int smallestEfficiencyFactor = Integer.MAX_VALUE;
         // int smallestEfficiencyPrime = 0;
         // for (int i = 0; i < 100000; i++) {
         //     HashWordSet hash = new HashWordSet();
-        //     if (isPrime(i)) {
+        //     if (true) {
         //         Scanner reader = new Scanner(file);
         //         while (reader.hasNext()) {
         //             hash.add(reader.next(), i);
@@ -41,7 +40,7 @@ public class Program {
         // System.out.println("The smallest efficiency factor is " + smallestEfficiencyFactor + " with prime "
         //         + smallestEfficiencyPrime);
 
-        // print the hash object
+        //print the hash object
         System.out.println(hash);
 
         System.out.println("Goodbye!");

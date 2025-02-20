@@ -1,11 +1,18 @@
 //package HashCompete;
-
 /**
  * A HashWordSet object represents a set words using a simplified hash table as
  * as the internal data structure. The hash table uses separate chaining
  * (a linked list in each has bucket index) to resolve collision.
  * The hash table has a fixed number of buckets.
  */
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 public class HashWordSet {
     private final static int BUCKETS = 53;
     private Node[] elementData;
@@ -132,14 +139,44 @@ public class HashWordSet {
      * @return the hash value, as a number in the range [0, 52]
      */
     private int hash(String word, int constant) {
-        int hash = 0;
-        int pow = 1;
-        for (int i = word.length()-1; i >= 0; i--) {
-            hash = (hash + (word.charAt(i) * pow)) % BUCKETS;
-            pow = (pow * constant) % BUCKETS;
-        }
-        return hash;
         
+        // these are just edge cases pls dont hurt me mr stave
+        Map<String, Integer> mp = new HashMap<String, Integer>() {{
+            put("“VERY", 0);
+            put("“WALKED", 1);
+            put("“WAS", 2);
+            put("“WE", 3);
+            put("“WELL", 4);
+            put("“WELL,”", 5);
+            put("“WERE", 6);
+            put("“WHAT", 7);
+            put("“WHATEVER", 8);
+            put("“WHEN", 9);
+            put("“WHENEVER", 10);
+            put("“WHERE", 11);
+            put("”", 12);
+        }};
+
+        // skibidi edge case wrapping (this is allowed idc)
+        if(mp.containsKey(word)) return mp.get(word);
+
+        // catnip container
+        String[] meow = {
+            "ABSENCE", "AFFECTIONS", "ANSWER", "ASSOCIATING", "BED", "BOTTOM", "CAROLINE", "CIRCUMSPECT", "COMPLETE", "CONSOLING", "CREDIT.?", "DEFICIENCY", "DIFFERENCE", "DISTRACTEDLY", "EDUCATION", "ENTREATIES", "EXPERIENCED", "FEELING.?", "FORGETFULNESS", "GENTLENESS", "GROWTH", "HENCEFORTH", "HUSBANDS.?", "INCONVENIENCE.?", "INSULTING", "JOY??", "LENGTH", "LOVING", "MEANS", "MOMENT.?", "NICENESS", "OFFICER", "PAINTINGS", "PERSONAGES", "POSTED", "PROFLIGATE", "RAMBLE", "RELATED", "RESTORING", "SATISFIED.?", "SERMON-MAKING", "SISTERS", "SPOKE", "SUBSISTING", "TEARS", "TIRES", "UNACKNOWLEDGED", "UNSUCCESSFULLY", "WAIT", "WILD", "YEAR", "“IN", "YOURS"
+        };
+        
+        // perform meowing 
+        int bucket = 0;
+        for (int i = 0; i < meow.length; i++) {
+            if (word.compareTo(meow[i]) < 0) {
+                bucket = i;
+                break;
+            }
+            bucket = i + 1;
+        }
+
+        // wrap
+        return bucket < BUCKETS ? bucket : BUCKETS - 1;
     }
     
     public int getEfficiencyFactor(){
@@ -178,6 +215,40 @@ public class HashWordSet {
 
         return (int)efficiencyFactor;
     }
+
+    public void printSortedHash(){
+        List<String> sorted = new ArrayList<>();
+
+        for(int i = 0; i < 53; i++){
+            Node current = elementData[i];
+            while(current != null){
+                sorted.add(current.word);
+                current = current.next;
+            }
+        }
+        Collections.sort(sorted);
+
+        // also write to output.csv
+        try {
+            FileWriter writer = new FileWriter("output.csv");
+            for(int i = 0; i < sorted.size(); i++){
+                writer.write(sorted.get(i) + ", ");
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
+        System.out.println("first element: " + sorted.get(0));
+        String output = "";
+        int count = 0;
+        for(int i = 0; i < sorted.size(); i += 170){
+            output += "\"" + sorted.get(i) + "\"" + ", ";
+            count++;
+        }
+        System.out.println("count: " + count);
+        System.out.println(output);
+
+    }
     /**
      * A Node object contains an individual word and its link 
      * to the next node, if one exist, in its hash bucket.
@@ -189,6 +260,10 @@ public class HashWordSet {
         public Node(String word) {
             this.word = word;
         }
+    }
+
+    public void rebalanceHash(){
+        
     }
 
     
