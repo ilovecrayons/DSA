@@ -20,5 +20,44 @@ public class App {
         System.out.println("Memory efficiency: " + (st.getDataSize() / (hashOverhead + st.getDataSize())));
         System.out.println("Load factor: " + st.loadFactor());
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
     }
 }
