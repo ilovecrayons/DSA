@@ -1,10 +1,16 @@
 package Graphs.main;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Class definition for a generic (Directed) Graph.
@@ -196,7 +202,6 @@ public class Graph<T extends Comparable<T>> {
      * @return true if Graph is Directed Acyclic, false otherwise.
      */
     public boolean isDAGraph() {
-        // Reset all nodes' states
         for (Node<T> n : _nodes.values()) {
             n.reset();
         }
@@ -256,6 +261,25 @@ public class Graph<T extends Comparable<T>> {
         return adjMatrix;
     }
 
+    public Map<Node<T>, Integer> getNodeIndexMap(){
+        Map<Node<T>, Integer> nodeIndexMap = new HashMap<>();
+        int index = 0;
+        for (Node<T> node : _nodes.values()) {
+            nodeIndexMap.put(node, index++);
+        }
+        return nodeIndexMap;
+    }
+
+    public Map<Integer, Node<T>> getReverseIndexMap(){
+        Map<Integer, Node<T>> reverseIndexMap = new HashMap<>();
+        int index = 0;
+        for (Node<T> node : _nodes.values()) {
+            reverseIndexMap.put(index++, node);
+        }
+        return reverseIndexMap;
+    }
+
+
     /**
      * Gives a multi-line String representation of this Graph. Each line in the returned
      * string represent a Node in the graph, followed by its outgoing (egress) Edges.
@@ -285,4 +309,229 @@ public class Graph<T extends Comparable<T>> {
         
         return output;
     }
+
+    /**
+     * Generates a map grouping all nodes in the graph by their out-degree.
+     * @return a map where each out-degree value in the graph (key) is associated
+     * with the set of nodes (value) having that out-degree.
+     */
+    public TreeMap<Integer, TreeSet<T>> getOutDegrees() {
+        TreeMap<Integer, TreeSet<T>> ans = new TreeMap<Integer, TreeSet<T>>();
+        for(int x : _nodes.keySet()){
+            int degree = _nodes.get(x).getOutDegree();
+            if(!ans.containsKey(degree)){
+                ans.put(degree, new TreeSet<T>());
+                ans.get(degree).add(_nodes.get(x).getData());
+            } else {
+                ans.get(degree).add(_nodes.get(x).getData());
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * Generates a map grouping all nodes in the graph by their in-degree.
+     * @return a map where each in-degree value in the graph (key) is associated
+     * with the set of nodes (value) having that in-degree.
+     */
+    public TreeMap<Integer, TreeSet<T>> getInDegrees() {
+        int[][] adjMatrix = getAdjacencyMatrix();
+        TreeMap<Integer, TreeSet<T>> ans = new TreeMap<Integer, TreeSet<T>>();
+        for(int i = 0; i < adjMatrix.length; i++){
+            int degree = 0;
+            for(int j = 0; j < adjMatrix.length; j++){
+                degree += adjMatrix[j][i];
+            }
+            if(!ans.containsKey(degree)){
+                ans.put(degree, new TreeSet<T>());
+                ans.get(degree).add(getReverseIndexMap().get(i).getData());
+            } else {
+                ans.get(degree).add(getReverseIndexMap().get(i).getData());
+            }
+        }
+        return ans;
+
+        
+    }
+
+    public TreeMap<Integer, TreeSet<Node<T>>> getInDegreeNodes(){
+        int[][] adjMatrix = getAdjacencyMatrix();
+        TreeMap<Integer, TreeSet<Node<T>>> ans = new TreeMap<Integer, TreeSet<Node<T>>>();
+        for(int i = 0; i < adjMatrix.length; i++){
+            int degree = 0;
+            for(int j = 0; j < adjMatrix.length; j++){
+                degree += adjMatrix[j][i];
+            }
+            if(!ans.containsKey(degree)){
+                ans.put(degree, new TreeSet<Node<T>>());
+                ans.get(degree).add(getReverseIndexMap().get(i));
+            } else {
+                ans.get(degree).add(getReverseIndexMap().get(i));
+            }
+        }
+        return ans;
+    }
+
+    public int getInDegree(Node<T> n){
+        int[][] adjMatrix = getAdjacencyMatrix();
+        int degree = 0;
+        for(int i = 0; i < adjMatrix.length; i++){
+            degree += adjMatrix[i][getNodeIndexMap().get(n)];
+        }
+        return degree;
+    }
+
+    /**
+     * Generates the topological sort of this graph, where all nodes in the graph
+     * are grouped by their index in topological order. The first index is 0.
+     * @return a map associating each position in the topological sort (key)
+     * with the set of Nodes at that position (value). If the Graph is not DAG, the method 
+     * returns null.
+     */
+    
+    public TreeMap<Integer, TreeSet<T>> topoSort() {
+        if (!isDAGraph()) {
+            return null;
+        }
+    
+        Map<Node<T>, Integer> inDegreeMap = new HashMap<>();
+        for (Node<T> n : _nodes.values()) {
+            inDegreeMap.put(n, getInDegree(n));
+        }
+    
+        TreeMap<Integer, TreeSet<T>> ans = new TreeMap<>();
+        int level = 0;
+        Queue<Node<T>> queue = new LinkedList<>();
+    
+        for (Node<T> n : _nodes.values()) {
+            if (inDegreeMap.get(n) == 0) {
+                queue.offer(n);
+            }
+        }
+    
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            TreeSet<T> levelSet = new TreeSet<>();
+
+            Queue<Node<T>> nextQueue = new LinkedList<>();
+            for (int i = 0; i < size; i++) {
+                Node<T> current = queue.poll();
+                levelSet.add(current.getData());
+                for (Node<T> neighbor : current.getEdges().values()) {
+                    inDegreeMap.put(neighbor, inDegreeMap.get(neighbor) - 1);
+                    if (inDegreeMap.get(neighbor) == 0) {
+                        nextQueue.offer(neighbor);
+                    }
+                }
+            }
+            ans.put(level, levelSet);
+            level++;
+            queue = nextQueue;
+        }
+        return ans;
+    }
+    
+    
+
+    /**
+     * Generates the count of the partitions in the graph.
+     * @return count of partitions.
+     */
+    public int countPartitions() {
+        this.makeUndirected();
+        int ans = 0;
+        for(Node<T> n : _nodes.values()){
+            n.reset();
+        }
+        
+        for(Node<T> n : _nodes.values()){
+            if(n.getState() == 0){
+                Stack<Node<T>> stack = new Stack<Node<T>>();
+                stack.push(n);
+                while(stack.isEmpty() == false){
+                    Node<T> crt = stack.pop();
+                    if(crt.getState() != 0){
+                        continue;
+                    }
+                    crt.setState(1);
+                    for(Node<T> m : crt.getEdges().values()){
+                        if(m.getState() == 0){
+                            stack.push(m);
+                        }
+                    }
+                }
+                ans++;
+            }
+        }
+        return ans;
+
+
+    }
+
+    public void makeUndirected(){
+        for(Node<T> n : _nodes.values()){
+            for(Node<T> m : n.getEdges().values()){
+                if(!m.getEdges().containsValue(n)){
+                    m.addEdge(n);
+                }
+            }
+        }
+    }
+
+    Node<T> getNode(T data) {
+        return _nodes.get(data.hashCode());
+    }
+
+
+    /**
+     * Generates the Dijkstra distances between the node containing fromData and all the
+     * other nodes in the graph.
+     * @param fromData
+     * @return a map where the key is each Node in the Graph (given by its data)
+     * and the value is the Dijkstra distance from the <i>source</i> Node to that node.
+     */
+    public TreeMap<T, Integer> dijkstra(T fromData) {
+        Node<T> startNode = getNode(fromData);
+        Set<Node<T>> sptSet = new TreeSet<>();
+        TreeMap<Node<T>, Integer> distances = new TreeMap<>();
+        for(Node<T> n : _nodes.values()){
+            distances.put(n, Integer.MAX_VALUE);
+        }
+        distances.put(startNode, 0);
+
+        while(sptSet.size() != _nodes.size()){
+            // pick u
+            Node<T> u = null;
+            int min = Integer.MAX_VALUE;
+            for(Entry<Node<T>, Integer> n : distances.entrySet()){
+                if(n.getValue() < min && !sptSet.contains(n.getKey())){
+                    u = n.getKey();
+                    min = n.getValue();
+                }
+            }
+
+            if(u == null){
+                break;
+            }
+            sptSet.add(u);
+
+            for(Node<T> neighbor : u.getEdges().values()){
+                if(distances.get(u) + 1 < distances.get(neighbor)){
+                    distances.put(neighbor, distances.get(u) + 1);
+                }
+            }
+        }
+
+        TreeMap<T, Integer> ans = new TreeMap<>();
+        //convert back
+        for(Entry<Node<T>, Integer> n : distances.entrySet()){
+            if(n.getValue() != Integer.MAX_VALUE){
+                ans.put(n.getKey().getData(), n.getValue());
+            } else {
+                ans.put(n.getKey().getData(), -1);
+            }
+        }
+        return ans;
+    }
+
 }

@@ -31,6 +31,9 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
      */
     private T _data;
     
+    public int _inDegree;
+    
+
     /**
      * State metadata contained in this Node. This can be used as needed
      * either to mark nodes as "visited" or to tag them with a numerical
@@ -83,6 +86,11 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         _state++;
         return _state;
     }
+
+    public int setState(int n){
+        _state = n;
+        return _state;
+    }
     
     /**
      * Resets the state of this Node to its initial value (0).
@@ -131,6 +139,8 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         return output;
     }
 
+
+
     /**
      * Compares this Node to the other Node. The result of comparing two Nodes is 
      * identical to the result of comparing the <i>_data</i> they contain.
@@ -145,5 +155,12 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
     public Map<Integer, Node<T>> getEdges() {
         return _edges;
     }
+
+    public int getOutDegree(){
+        return _edges.size();
+    }
+
+
+
 }
 
