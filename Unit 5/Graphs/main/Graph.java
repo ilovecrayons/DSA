@@ -534,4 +534,67 @@ public class Graph<T extends Comparable<T>> {
         return ans;
     }
 
+    public boolean hasEulerianCircuit() {
+        if(!isStronglyConnected()){
+            return false;
+        }
+
+        for(Node<T> n : _nodes.values()){
+            if(n.getOutDegree() != getInDegree(n)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isStronglyConnected() {
+        Node<T> start = _nodes.values().iterator().next();
+        for(Node<T> n : _nodes.values()){
+            n.reset();
+        }
+        if(!isReachableFrom(start)){
+            return false;
+        }
+
+        Graph<T> reversed = getReversedGraph();
+        for(Node<T> n : reversed._nodes.values()){
+            n.reset();
+        }
+        return reversed.isReachableFrom(reversed.getNode(start.getData()));
+
+
+    }
+
+    public boolean isReachableFrom(Node<T> start){
+        Stack<Node<T>> stack = new Stack<Node<T>>();
+        Set<Node<T>> visited = new HashSet<Node<T>>();
+        stack.push(start);
+        while(!stack.isEmpty()){
+            Node<T> current = stack.pop();
+            if(visited.contains(current)){
+                continue;
+            }
+            visited.add(current);
+            for(Node<T> n : current.getEdges().values()){
+                stack.push(n);
+            }
+        }
+        return visited.size() == _nodes.size();
+    }
+
+    public Graph<T> getReversedGraph() {
+        Graph<T> ans = new Graph<T>();
+        for(Node<T> n : _nodes.values()){
+            ans.addNode(n.getData());
+        }
+        for(Node<T> n : _nodes.values()){
+            for(Node<T> m : n.getEdges().values()){
+                ans.addEdge(m.getData(), n.getData());
+            }
+        }
+        return ans;
+
+    } 
+
+
 }
