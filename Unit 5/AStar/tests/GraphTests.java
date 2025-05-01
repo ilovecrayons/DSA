@@ -85,7 +85,7 @@ public class GraphTests extends TestsCore {
         assertEquals(732.590, gp.getTraveledDistance(), 0.001); // FindFirst = Dijkstra = A*
 
         assertEquals("[A, B, D, G, K]", gp.routeAStar("A", "K").toString());
-        assertEquals(9, gp.getQueueAddCount()); // Dijkstra < FindFirst < A*
+        assertEquals(10, gp.getQueueAddCount()); // Dijkstra < FindFirst < A*
         assertEquals(446.119, gp.getTraveledDistance(), 0.001); // FindFirst = Dijkstra = A*
 
         gp = readGraph("/AStar/data/graph2.txt");

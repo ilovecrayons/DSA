@@ -20,6 +20,13 @@ public class Node implements Comparable<Node> {
     private Node _previous;
     // Accumulated distance from the beginning of the route: sum of the lengths of all edges along the route from start to this node.
     private double _distanceSoFar;
+
+    public double getDistanceSoFar(){
+        return _distanceSoFar;
+    }
+    public void setDistanceSoFar(double distance){
+        this._distanceSoFar = distance;
+    }
     
     public Node(Point data) {
         _point = data;
@@ -43,7 +50,13 @@ public class Node implements Comparable<Node> {
 
     public void setState(Node previous) {
         _previous = previous;
+        if(_previous != null)
         _distanceSoFar = previous._distanceSoFar + _point.distance(previous._point);
+    }
+    
+    // Add a method to set state without recalculating distance
+    public void setStateWithoutDistance(Node previous) {
+        _previous = previous;
     }
 
     public void addNeighbor(Node otherNode) {
