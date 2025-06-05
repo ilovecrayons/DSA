@@ -1,7 +1,6 @@
 package Graphs.main;
 
 public class Program {
-
     public static void main(String[] args) {
         /*
          * The following demonstrates how to create a
