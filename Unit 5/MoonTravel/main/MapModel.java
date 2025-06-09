@@ -225,13 +225,13 @@ public class MapModel {
         
         _startArea.resetState(0);
         unvisited.add(_startArea);
-        
+        boolean reached = false;
         while (!unvisited.isEmpty()) {
             _moonMap.breakStep(1);
             MapArea current = unvisited.remove();
             
             if (current == _targetArea) {
-                return true;
+                reached = true;
             }
             
             for (MapArea neighbor : getNeighbors(current)) {
@@ -241,7 +241,7 @@ public class MapModel {
                 }
             }
         }        
-        return false;
+        return reached;
     }
 
     /**

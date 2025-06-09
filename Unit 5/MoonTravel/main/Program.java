@@ -115,7 +115,7 @@ public class Program {
      */
     public static void main(String[] args) throws IOException {
         // load and open the MoonMap image and take the "raw" snapshot of the map.
-        _moonMap = new MoonMap("moon.jpg");
+        _moonMap = new MoonMap("MoonTravel/data/moon2.jpg");
         _moonMap.open();
         _moonMap.snapshot(State.RAW.name());
         _moonMap.breakLeap("Raw Moon map loaded!");
